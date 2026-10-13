@@ -1,6 +1,6 @@
-def obrabotka(list)
+def obrabotka(list):
     list_copy = list[:]
-    list_copy = list_copy.append(99)
+    list_copy.append(99)
     return(list_copy)
 
 original = [1, 2, 3]
