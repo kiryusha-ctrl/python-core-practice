@@ -1,12 +1,17 @@
-def my_decorator(func):
-    def wrapper(*args, **kwargs):
-        print("Старт")
-        func(*args, **kwargs)
-        print("Финиш")
-    return wrapper
+import time
 
-@my_decorator
-def greet(name):
-    print(f"Привет, {name}!")
+def dec_timer(func):
+    def timer(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        finish = time.time()
+        print(f"функция заняла {finish - start} секунд")
+        return result
+    return timer
+@dec_timer
+def slow_function():
+    for i in range(1000000):
+        pass
+    return "Готово!"
 
-greet("Кирюха")
+print(slow_function())
